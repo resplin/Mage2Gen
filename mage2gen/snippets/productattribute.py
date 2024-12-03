@@ -159,10 +159,10 @@ class ProductAttributeSnippet(Snippet):
 		install_patch.add_method(Phpmethod(
 			'__construct',
 			params=[
-				'private readonly ModuleDataSetupInterface $moduleDataSetup',
-				'private readonly EavSetupFactory $eavSetupFactory'
+				'private ModuleDataSetupInterface $moduleDataSetup',
+				'private EavSetupFactory $eavSetupFactory'
 			],
-			body="$this->moduleDataSetup = $moduleDataSetup;\n$this->eavSetupFactory = $eavSetupFactory;",
+			body="",
 			docstring=[
 				'Constructor',
 				'',
@@ -208,7 +208,7 @@ $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
 			'getDependencies',
 			return_type='array',
 			access='public static',
-			body="return [\n\n];",
+			body="return [];",
 			docstring=[
 				'{@inheritdoc}'
 			]

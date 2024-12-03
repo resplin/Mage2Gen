@@ -52,7 +52,7 @@ class GraphQlEndpointSnippet(Snippet):
         cache_identity_graphqlformat = ''
         if add_cache_identity and item_identifier and base_type == 'Query':
             object_id = object_fields.split(',')[0]
-            cache_identity_graphqlformat = '{}\\\{}\\\Model\\\Resolver\\\{}\\Identity'.format(self._module.package, self._module.name,
+            cache_identity_graphqlformat = '{}\\\{}\\\Model\\\Resolver\\\{}\\\\Identity'.format(self._module.package, self._module.name,
                                                                           item_identifier)
             if add_cache_identity:
                 cacheIdentity = Phpclass(

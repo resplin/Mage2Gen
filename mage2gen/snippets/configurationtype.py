@@ -51,8 +51,8 @@ class ConfigurationTypeSnippet(Snippet):
 		schema_locator_class = Phpclass('Config\\{}\\SchemaLocator'.format(config_class_name), 
             implements=['\\Magento\\Framework\\Config\\SchemaLocatorInterface'],
             attributes=[
-                'private readonly ?string $schema;',
-                'private readonly ?string $perFileSchema;'
+                'private ?string $schema;',
+                'private ?string $perFileSchema;'
             ],
             dependencies=['Magento\\Framework\\Module\\Dir\\Reader']
         )

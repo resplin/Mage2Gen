@@ -154,7 +154,7 @@ class ProductTypeSnippet(Snippet):
 
         install_data.add_method(Phpmethod(
             '__construct',
-            params=['private readonly EavSetupFactory $eavSetupFactory'],
+            params=['private EavSetupFactory $eavSetupFactory'],
             body="",
             docstring=[
                 'Constructor',

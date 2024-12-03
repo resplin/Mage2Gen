@@ -72,7 +72,7 @@ class EavEntityAttributeSnippet(Snippet):
 		user_defined = 'true'
 		options = options.split(',') if options else []
 		options_php_array = '"'+'","'.join(x.strip() for x in options) + '"'
-		options_php_array_string = "array('values' => array("+options_php_array+"))"
+		options_php_array_string = "['values' => ["+options_php_array+"]]"
 
 		attribute_code = extra_params.get('attribute_code', None)
 		if not attribute_code:
@@ -156,6 +156,7 @@ $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
 """ + methodBody,
 			docstring=[
 				'{@inheritdoc}',
+				'@return void',
 			]
 		))
 
@@ -167,14 +168,19 @@ $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
 			body="""
 				/** @var EavSetup $eavSetup */
 		$eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
-		$eavSetup->removeAttribute({entity_type}, '{attribute_code}');""".format(entity_type=entity_type, attribute_code=attribute_code)
+		$eavSetup->removeAttribute({entity_type}, '{attribute_code}');""".format(entity_type=entity_type, attribute_code=attribute_code),
+			docstring=[
+				'{@inheritdoc}',
+				'@return array',
+			]
 		))
 		install_patch.add_method(Phpmethod(
 			'getAliases',
 			body="return [];",
 			return_type='array',
 			docstring=[
-				'{@inheritdoc}'
+				'{@inheritdoc}',
+				'@return array',
 			]
 		))
 
@@ -184,7 +190,8 @@ $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
 			return_type='array',
 			body="return [\n\n];",
 			docstring=[
-				'{@inheritdoc}'
+				'{@inheritdoc}',
+				'@return array'
 			]
 		))
 
